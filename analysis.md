@@ -13,7 +13,8 @@ men_product:
                     -size
         -WIDTH(select[m,w])
         -color(relations)
-                -size selections
+                -product
+                -color selections
                     -product
                     -color
         -image(relations)
