@@ -25,23 +25,7 @@ PRODUCT_COLOR = (('Black', 'Black'),
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='category')
-
-
-class MenProduct(models.Model):
-    name = models.CharField(max_length=50)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-    subtitle = models.TextField(max_length=300)
-    brand = models.CharField(max_length=100)
-    category = models.ForeignKey(
-        Category, on_delete=models.SET_NULL, null=True, blank=True, related_name='Category')
-    width = models.CharField(max_length=50, choices=WIDTH)
-    martial = models.CharField(max_length=50, choices=MATERIAL)
-    style = models.CharField(max_length=25)
-    description = models.TextField(max_length=1000)
-    manufacturer = models.TextField(max_length=1000)
-    tag = TaggableManager()
-    slug = models.SlugField(null=True, blank=True)
+    image = models.ImageField(upload_to='Women_category')
 
 
 class WomenProduct(models.Model):
@@ -50,7 +34,7 @@ class WomenProduct(models.Model):
     subtitle = models.TextField(max_length=300)
     brand = models.CharField(max_length=100)
     category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, related_name='Category')
+        Category, on_delete=models.CASCADE, related_name='Women_Category')
     width = models.CharField(max_length=50, choices=WIDTH)
     martial = models.CharField(max_length=50, choices=MATERIAL)
     style = models.CharField(max_length=25)
@@ -59,37 +43,48 @@ class WomenProduct(models.Model):
     tag = TaggableManager()
     slug = models.SlugField(null=True, blank=True)
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(WomenProduct, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return str(self.name)
+
 
 class ProductSize(models.Model):
-    men_product = models.ForeignKey(
-        MenProduct, on_delete=models.CASCADE, related_name='MenProduct_Size')
     women_product = models.ForeignKey(
-        WomenProduct, on_delete=models.CASCADE, related_name='womenProduct_Size')
+        WomenProduct, on_delete=models.CASCADE, related_name='women_Size')
     size = models.CharField(max_length=50, choices=PRODUCT_SIZE)
+
+    def __str__(self):
+        return str(self.women_product)
 
 
 class ProductColor(models.Model):
-    men_product = models.ForeignKey(
-        MenProduct, on_delete=models.CASCADE, related_name='MenProduct_color')
     women_product = models.ForeignKey(
-        WomenProduct, on_delete=models.CASCADE, related_name='womenProduct_color')
+        WomenProduct, on_delete=models.CASCADE, related_name='women_color')
     color = models.CharField(max_length=50, choices=PRODUCT_COLOR)
+
+    def __str__(self):
+        return str(self.women_product)
 
 
 class ProductImages(models.Model):
-    men_product = models.ForeignKey(
-        MenProduct, on_delete=models.CASCADE, related_name='MenProduct_image')
     women_product = models.ForeignKey(
-        WomenProduct, on_delete=models.CASCADE, related_name='womenProduct_image')
-    image = models.ImageField(upload_to='ProductImages')
+        WomenProduct, on_delete=models.CASCADE, related_name='women_image')
+    image = models.ImageField(upload_to='women_Images')
+
+    def __str__(self):
+        return str(self.women_product)
 
 
 class ProductReview(models.Model):
-    user = models.ForeignKey(User, related_name='user_Review',
+    user = models.ForeignKey(User, related_name='Women_user_Review',
                              on_delete=models.SET_NULL, null=True, blank=True)
-    men_product = models.ForeignKey(
-        MenProduct, on_delete=models.SET_NULL, null=True, blank=True, related_name='MenProduct_Review')
     women_product = models.ForeignKey(
-        WomenProduct, on_delete=models.CASCADE, related_name='womenProduct_Review')
+        WomenProduct, on_delete=models.CASCADE, related_name='women_Review')
     rate = models.IntegerField()
     review = models.TextField(max_length=500)
+
+    def __str__(self):
+        return str(self.women_product)
