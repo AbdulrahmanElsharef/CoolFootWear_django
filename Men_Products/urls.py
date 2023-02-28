@@ -1,11 +1,11 @@
-# from django.contrib import admin
-# from django.urls import path
-# from .views import ProductList
+from django.contrib import admin
+from django.urls import path
+from .views import *
 
 
-# app_name='Products'
+app_name = 'Men_Products'
 
 
-# urlpatterns = [
-#     path('products',ProductList.as_view(),name='product_list'),
-# ]
+urlpatterns = [
+    path('men_products', MenProductList.as_view(), name='men_product_list'),
+]

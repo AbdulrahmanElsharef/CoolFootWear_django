@@ -1,9 +1,9 @@
-# from django.shortcuts import render
-# from django.views.generic import ListView, DetailView
-# # Create your views here.
-# from .models import *
+from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+# Create your views here.
+from .models import *
 
 
-# class ProductList(ListView):
-#     model = Product
+class MenProductList(ListView):
+    model = MenProduct
     
