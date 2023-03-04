@@ -121,3 +121,12 @@ class WomenProduct(Product):
 
     def __str__(self):
         return str(self.name)
+
+
+class About(models.Model):
+    title = models.CharField(max_length=25)
+    image = models.ImageField(upload_to='About')
+    description = models.TextField(max_length=1000)
+
+    def __str__(self):
+        return str(self.title)

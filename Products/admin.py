@@ -26,6 +26,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Brand)
 admin.site.register(Category)
+admin.site.register(About)
 admin.site.register(MenProduct, ProductAdmin)
 admin.site.register(WomenProduct, ProductAdmin)
 admin.site.register(ProductSize)
