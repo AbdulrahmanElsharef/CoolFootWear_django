@@ -1,4 +1,4 @@
-from Men_Products.models import *
+from Products.models import *
 import random
 from faker import Faker
 import django

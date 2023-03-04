@@ -4,6 +4,6 @@ from django.views.generic import ListView, DetailView
 from .models import *
 
 
-class MenProductList(ListView):
-    model = MenProduct
+# class MenProductList(ListView):
+#     model = MenProduct
     

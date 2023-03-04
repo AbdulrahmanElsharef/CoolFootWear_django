@@ -3,19 +3,19 @@ from .models import *
 
 
 class ProductSizeInline(admin.TabularInline):
-    model = WomenSize
+    model = ProductSize
 
 
 class ProductColorInline(admin.TabularInline):
-    model = WomenColor
+    model = ProductColor
 
 
 class ProductImagesInline(admin.TabularInline):
-    model = WomenImages
+    model = ProductImages
 
 
 class ProductReviewInline(admin.TabularInline):
-    model = Women_Review
+    model = ProductReview
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -23,8 +23,12 @@ class ProductAdmin(admin.ModelAdmin):
                ProductImagesInline, ProductReviewInline]
 
 
+
+admin.site.register(Brand)
+admin.site.register(Category)
+admin.site.register(MenProduct, ProductAdmin)
 admin.site.register(WomenProduct, ProductAdmin)
-admin.site.register(WomenSize)
-admin.site.register(WomenColor)
-admin.site.register(WomenImages)
-admin.site.register(Women_Review)
+admin.site.register(ProductSize)
+admin.site.register(ProductColor)
+admin.site.register(ProductImages)
+admin.site.register(ProductReview)
