@@ -20,8 +20,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include('Men_Products.urls', namespace='MenProducts')),
-    # path('', include('WomenProducts.urls', namespace='womenProducts')),
+    path('', include('Products.urls', namespace='Products')),
+
 ]
 
 

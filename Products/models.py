@@ -53,6 +53,7 @@ class Product(models.Model):
                               on_delete=models.SET_NULL, blank=True, null=True)
     category = models.ForeignKey(Category, related_name='Product_Category',
                                  on_delete=models.SET_NULL, blank=True, null=True)
+    image = models.ImageField(upload_to='Product_Images')
     width = models.CharField(max_length=25, choices=PRODUCT_WIDTH)
     martial = models.CharField(max_length=25, choices=PRODUCT_MATERIAL)
     style = models.CharField(max_length=25)

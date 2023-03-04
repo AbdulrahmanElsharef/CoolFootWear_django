@@ -6,6 +6,7 @@ from .views import *
 app_name = 'Products'
 
 
-# urlpatterns = [
-#     path('men_products', MenProductList.as_view(), name='men_product_list'),
-# ]
+urlpatterns = [
+    path('menProducts', MenProductList.as_view(), name='men_list'),
+    path('womenProducts', WomenProductList.as_view(), name='women_list'),
+]
