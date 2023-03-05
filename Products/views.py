@@ -6,6 +6,7 @@ from .models import *
 
 class MenProductList(ListView):
     model = MenProduct
+    paginate_by=27
     extra_context = {'brands': Brand.objects.all(
     ), 'categories': Category.objects.all()}
 
@@ -19,6 +20,7 @@ class MenProductDetail(DetailView):
 
 class WomenProductList(ListView):
     model = WomenProduct
+    paginate_by=27
     extra_context = {'brands': Brand.objects.all(
     ), 'categories': Category.objects.all()}
     

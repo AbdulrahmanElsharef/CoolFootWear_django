@@ -10,10 +10,24 @@
         </div>
     </div>
 </div>
+<div class="breadcrumbs-two">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="breadcrumbs-img" style="background-image: url(static/images/cover-img-1.jpg);">
+                    <h2>Men's</h2>
+                </div>
+                <div class="menu text-center">
+                    <p><a href="#"></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="colorlib-featured">
     <div class="container">
         <div class="row">
-            {% for cat in categories%}
+            {% for cat in categories|slice:"0:3"%}
             <div class="col-sm-4 text-center">
                 <div class="featured">
                     <div class="featured-img featured-img-2" style="background-image: url({{cat.image.url}});">
@@ -37,9 +51,19 @@
                         <div class="side border mb-1">
                             <h3>Brand</h3>
                             <ul>
-                                {% for brand in brands %}
+                                {% for brand in brands|slice:"0:6" %}
                                 <li><a href="#">{{brand.name}}</a></li>
                                 {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="side border mb-1">
+                            <h3>Category</h3>
+                            <ul>
+                                {% for cat in categories|slice:"0:6"%}
+                                <li><a href="#">{{cat}}</a></li>
+                                {%endfor%}
                             </ul>
                         </div>
                     </div>
@@ -75,16 +99,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12">
-                        <div class="side border mb-1">
-                            <h3>Category</h3>
-                            <ul>
-                                {% for cat in categories%}
-                                <li><a href="#">{{cat}}</a></li>
-                                {%endfor%}
-                            </ul>
-                        </div>
-                    </div>
+
                     <div class="col-sm-12">
                         <div class="side border mb-1">
                             <h3>Colors</h3>

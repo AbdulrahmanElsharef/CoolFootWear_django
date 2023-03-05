@@ -22,9 +22,13 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductSizeInline, ProductColorInline,
                ProductImagesInline, ProductReviewInline]
 
-
+# class ProductAdmin(admin.ModelAdmin):
+#     list_display = ['title', 'author']
+#     list_filter = ['tags', 'slug']
+#     search_fields = ['title', 'contents']
 
 admin.site.register(Brand)
+admin.site.register(Product)
 admin.site.register(Category)
 admin.site.register(About)
 admin.site.register(MenProduct, ProductAdmin)

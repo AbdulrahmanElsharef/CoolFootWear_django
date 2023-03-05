@@ -44,12 +44,21 @@
 						</span>
 					</p>
 					<p>{{object.subtitle}}</p>
+
 					<div class="size-wrap">
 						<div class="block-26 mb-2">
 							<h4>Size</h4>
 							<ul>
 								{% for item in object.Product_Size.all %}
 								<li><a href="#">{{item.size}}</a></li>
+								{% endfor %}
+							</ul>
+						</div>
+						<div class="block-26 mb-2">
+							<h4>Color</h4>
+							<ul>
+								{% for item in object.Product_Color.all %}
+								<li><a href="#">{{item.color}}</a></li>
 								{% endfor %}
 							</ul>
 						</div>

@@ -1,111 +1,127 @@
+import os
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
+################################
+import django
+django.setup()
+###########################
+
 from Products.models import *
 import random
 from faker import Faker
-import django
-import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 
 
-django.setup()
-
-
-def seed_brand(n):
-    fake = Faker()
-    images = ['brand-1.jpg', 'brand-2.jpg',
-              'brand-3.jpg', 'brand-4.jpg', 'brand-5.jpg']
-    for x in range(n):
-        Brand.objects.create(
-            name=fake.name(),
-            image=f"brand_images/{images[random.randint(0,4)]}"
-        )
-    print(f'{n} Brand Seeded')
+# def seed_brand(n):
+#     fake = Faker()
+#     images = ['brand-1.jpg', 'brand-2.jpg',
+#               'brand-3.jpg', 'brand-4.jpg', 'brand-5.jpg']
+#     for x in range(n):
+#         Brand.objects.create(
+#             name=fake.name(),
+#             image=f"Brand/{images[random.randint(0,4)]}"
+#         )
+#     print(f'{n} Brand Seeded')
 
 
 # seed_brand(25)
 
 
-def seedProducts(n):
-    fake = Faker()
-    WIDTH = ['wide', 'medium', 'narrow']
-    MATERIAL = ['Leather', 'Rubber', 'Textiles', 'Synthetics', 'Foam']
-    KIND = ['MEN', 'WOMEN', 'KIDS']
-    Category = ['FORMAL', 'CASUALS', 'SPORTS']
-    for x in range(n):
-        Product.objects.create(
-            name=fake.name(),
-            kind=KIND[random.randint(0, 2)],
-            price=round(random.uniform(49.99, 499.99), 2),
-            subtitle=fake.text(max_nb_chars=300),
-            category=Category[random.randint(0, 2)],
-            width=WIDTH[random.randint(0, 2)],
-            martial=MATERIAL[random.randint(0, 4)],
-            style=fake.text(max_nb_chars=25),
-            description=fake.text(max_nb_chars=1000),
-            manufacturer=fake.text(max_nb_chars=1000),
-            # brand = Brand.objects.get(id=random.randint(1,120)),
-        )
-    print(f'{n} Product Seeded')
+# def seed_Category(n):
+#     fake = Faker()
+#     images = ['img_bg_3.jpg', 'item-10.jpg',
+#               'item-11.jpg', 'item-12.jpg', 'men.jpg', 'women.jpg']
+#     for x in range(n):
+#         Category.objects.create(
+#             name=fake.name(),
+#             image=f"Category/{images[random.randint(0,4)]}"
+#         )
+#     print(f'{n} Category Seeded')
 
 
-seedProducts(100)
+# seed_Category(25)
+
+
+# def seedmenProducts(n):
+#     fake = Faker()
+#     WIDTH = ['wide', 'medium', 'narrow']
+#     MATERIAL = ['Leather', 'Rubber', 'Textiles', 'Synthetics', 'Foam']
+#     images = ['item-1.jpg', 'item-2.jpg', 'item-3.jpg', 'item-4.jpg', 'item-5.jpg', 'item-6.jpg', 'item-7.jpg', 'item-8.jpg',
+#               'item-9.jpg', 'item-10.jpg', 'item-11.jpg', 'item-11.jpg', 'item-12.jpg', 'item-13.jpg', 'item-14.jpg', 'item-15.jpg', 'item-16.jpg']
+#     for x in range(n):
+#         MenProduct.objects.create(
+#             name=fake.name(),
+#             price=round(random.uniform(49.99, 499.99), 2),
+#             subtitle=fake.text(max_nb_chars=300),
+#             image=f"Product_Images/{images[random.randint(0,15)]}",
+#             width=WIDTH[random.randint(0, 2)],
+#             martial=MATERIAL[random.randint(0, 4)],
+#             style=fake.text(max_nb_chars=25),
+#             description=fake.text(max_nb_chars=1000),
+#             manufacturer=fake.text(max_nb_chars=1000),
+#             brand = Brand.objects.get(id=random.randint(1,24)),
+#             category = Category.objects.get(id=random.randint(1,24)),
+#         )
+#     print(f'{n} MenProduct Seeded')
+
+
+# seedmenProducts(249)
 
 
 def seed_ProductSize(n):
     fake = Faker()
     SIZE = ['36', '37', '38', '39', '40', '41', '42', '43', '44',]
     for x in range(n):
-        Product_Size.objects.create(
-            product=Product.objects.get(id=random.randint(1, 100)),
+        ProductSize.objects.create(
+            product=Product.objects.get(id=random.randint(753, 1250)),
             size=SIZE[random.randint(0, 8)]
         )
     print(f'{n} ProductSize Seeded')
 
 
-seed_ProductSize(800)
+seed_ProductSize(1500)
 
 
-def seed_ProductColor(n):
-    fake = Faker()
-    COLOR = ['Black', 'White', 'Blue', 'Red',
-             'Green', 'Grey', 'Orange', 'Cream', 'Brown']
-    for x in range(n):
-        Product_Color.objects.create(
-            product=Product.objects.get(id=random.randint(1, 100)),
-            color=COLOR[random.randint(0, 8)]
-        )
-    print(f'{n} ProductColor Seeded')
+# def seed_ProductColor(n):
+#     fake = Faker()
+#     COLOR = ['Black', 'White', 'Blue', 'Red',
+#              'Green', 'Grey', 'Orange', 'Cream', 'Brown']
+#     for x in range(n):
+#         Product_Color.objects.create(
+#             product=Product.objects.get(id=random.randint(1, 100)),
+#             color=COLOR[random.randint(0, 8)]
+#         )
+#     print(f'{n} ProductColor Seeded')
 
 
-seed_ProductColor(800)
+# seed_ProductColor(800)
 
 
-def seed_ProductImages(n):
-    fake = Faker()
-    images = ['item-1.jpg', 'item-2.jpg', 'item-3.jpg', 'item-4.jpg', 'item-5.jpg', 'item-6.jpg', 'item-7.jpg', 'item-8.jpg',
-              'item-9.jpg', 'item-10.jpg', 'item-11.jpg', 'item-11.jpg', 'item-12.jpg', 'item-13.jpg', 'item-14.jpg', 'item-15.jpg', 'item-16.jpg']
-    for x in range(n):
-        Product_Images.objects.create(
-            product=Product.objects.get(id=random.randint(1, 100)),
-            image=f"products_image/{images[random.randint(0,15)]}",
-        )
-    print(f'{n} ProductImages Seeded')
+# def seed_ProductImages(n):
+#     fake = Faker()
+#     images = ['item-1.jpg', 'item-2.jpg', 'item-3.jpg', 'item-4.jpg', 'item-5.jpg', 'item-6.jpg', 'item-7.jpg', 'item-8.jpg',
+#               'item-9.jpg', 'item-10.jpg', 'item-11.jpg', 'item-11.jpg', 'item-12.jpg', 'item-13.jpg', 'item-14.jpg', 'item-15.jpg', 'item-16.jpg']
+#     for x in range(n):
+#         Product_Images.objects.create(
+#             product=Product.objects.get(id=random.randint(1, 100)),
+#             image=f"products_image/{images[random.randint(0,15)]}",
+#         )
+#     print(f'{n} ProductImages Seeded')
 
 
-seed_ProductImages(1000)
+# seed_ProductImages(1000)
 
 
-def seed_ProductReview(n):
-    fake = Faker()
-    for x in range(n):
-        Product_Review.objects.create(
-            product=Product.objects.get(id=random.randint(1, 100)),
-            rate=random.randint(0, 4),
-            review=fake.text(max_nb_chars=500)
-        )
-    print(f'{n} ProductReview Seeded')
+# def seed_ProductReview(n):
+#     fake = Faker()
+#     for x in range(n):
+#         Product_Review.objects.create(
+#             product=Product.objects.get(id=random.randint(1, 100)),
+#             rate=random.randint(0, 4),
+#             review=fake.text(max_nb_chars=500)
+#         )
+#     print(f'{n} ProductReview Seeded')
 
 
-seed_ProductReview(300)
+# seed_ProductReview(300)
 
 
 # def seed_womenProducts(n):
