@@ -14,8 +14,7 @@ class MenProductList(ListView):
 class MenProductDetail(DetailView):
     model = MenProduct
     template_name = 'Products/product_detail.html'
-    # extra_context = {'brands': Brand.objects.all(
-    # ), 'categories': Category.objects.all()}
+
 
 
 class WomenProductList(ListView):
@@ -29,10 +28,40 @@ class WomenProductDetail(DetailView):
     model = WomenProduct
     template_name = 'Products/product_detail.html'
 
-    # extra_context = {'brands': Brand.objects.all(
-    # ), 'categories': Category.objects.all()}
 
 
+class BrandList(ListView):
+    model = Brand
+    paginate_by = 30
+
+
+class BrandDetail(ListView):
+    model = Product
+    template_name = 'Products/brand_detail.html'
+    paginate_by = 30
+
+    def get_queryset(self):
+        brand = Brand.objects.get(slug=self.kwargs['slug'])
+        queryset = Product.objects.filter(brand=brand)
+        return queryset
+
+
+class CategoryList(ListView):
+    model =  Category
+    paginate_by = 30
+
+
+class  CategoryDetail(ListView):
+    model = Product
+    template_name = 'Products/category_detail.html'
+    paginate_by = 30
+
+    def get_queryset(self):
+        category = Category.objects.get(slug=self.kwargs['slug'])
+        queryset = Product.objects.filter(category=category)
+        return queryset
+    
+    
 def About_view(request):
     data = About.objects.all()
     context = {'about': data}
