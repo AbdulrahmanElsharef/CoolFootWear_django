@@ -99,7 +99,7 @@ class ProductColor(models.Model):
 class ProductImages(models.Model):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='Product_Images')
-    image = models.ImageField(upload_to='Product_Images')
+    image = models.ImageField(upload_to='products_image')
 
     def __str__(self):
         return str(self.product)

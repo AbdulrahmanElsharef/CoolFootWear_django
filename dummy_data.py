@@ -66,18 +66,18 @@ from faker import Faker
 # seedmenProducts(249)
 
 
-def seed_ProductSize(n):
-    fake = Faker()
-    SIZE = ['36', '37', '38', '39', '40', '41', '42', '43', '44',]
-    for x in range(n):
-        ProductSize.objects.create(
-            product=Product.objects.get(id=random.randint(753, 1250)),
-            size=SIZE[random.randint(0, 8)]
-        )
-    print(f'{n} ProductSize Seeded')
+# def seed_ProductSize(n):
+#     fake = Faker()
+#     SIZE = ['36', '37', '38', '39', '40', '41', '42', '43', '44',]
+#     for x in range(n):
+#         ProductSize.objects.create(
+#             product=Product.objects.get(id=random.randint(753, 1250)),
+#             size=SIZE[random.randint(0, 8)]
+#         )
+#     print(f'{n} ProductSize Seeded')
 
 
-seed_ProductSize(1500)
+# seed_ProductSize(1500)
 
 
 # def seed_ProductColor(n):
@@ -85,14 +85,14 @@ seed_ProductSize(1500)
 #     COLOR = ['Black', 'White', 'Blue', 'Red',
 #              'Green', 'Grey', 'Orange', 'Cream', 'Brown']
 #     for x in range(n):
-#         Product_Color.objects.create(
-#             product=Product.objects.get(id=random.randint(1, 100)),
+#         ProductColor.objects.create(
+#             product=Product.objects.get(id=random.randint(753, 1250)),
 #             color=COLOR[random.randint(0, 8)]
 #         )
 #     print(f'{n} ProductColor Seeded')
 
 
-# seed_ProductColor(800)
+# seed_ProductColor(2000)
 
 
 # def seed_ProductImages(n):
@@ -100,28 +100,28 @@ seed_ProductSize(1500)
 #     images = ['item-1.jpg', 'item-2.jpg', 'item-3.jpg', 'item-4.jpg', 'item-5.jpg', 'item-6.jpg', 'item-7.jpg', 'item-8.jpg',
 #               'item-9.jpg', 'item-10.jpg', 'item-11.jpg', 'item-11.jpg', 'item-12.jpg', 'item-13.jpg', 'item-14.jpg', 'item-15.jpg', 'item-16.jpg']
 #     for x in range(n):
-#         Product_Images.objects.create(
-#             product=Product.objects.get(id=random.randint(1, 100)),
+#         ProductImages.objects.create(
+#             product=Product.objects.get(id=random.randint(753, 1250)),
 #             image=f"products_image/{images[random.randint(0,15)]}",
 #         )
 #     print(f'{n} ProductImages Seeded')
 
 
-# seed_ProductImages(1000)
+# seed_ProductImages(2000)
 
 
 # def seed_ProductReview(n):
 #     fake = Faker()
 #     for x in range(n):
-#         Product_Review.objects.create(
-#             product=Product.objects.get(id=random.randint(1, 100)),
+#         ProductReview.objects.create(
+#             product=Product.objects.get(id=random.randint(753, 1250)),
 #             rate=random.randint(0, 4),
-#             review=fake.text(max_nb_chars=500)
+#             review=fake.text(max_nb_chars=500),
 #         )
 #     print(f'{n} ProductReview Seeded')
 
 
-# seed_ProductReview(300)
+# seed_ProductReview(1500)
 
 
 # def seed_womenProducts(n):

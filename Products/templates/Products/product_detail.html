@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+<!-- {% load static %} -->
 {% block body %}
 
 <div class="breadcrumbs">
@@ -18,11 +18,11 @@
 		<div class="row row-pb-lg product-detail-wrap">
 			<div class="col-sm-8">
 				<div class="owl-carousel">
-					{% for img in object.Product_Images.all%}
+					{% for item in object.Product_Images.all%}
 					<div class="item">
 						<div class="product-entry border">
 							<a href="#" class="prod-img">
-								<img src="{{img.image.url}}" class="img-fluid" alt="{{object}} image">
+								<img src="{{item.image.url}}" class="img-fluid" alt="{{object}} image">
 							</a>
 						</div>
 					</div>
