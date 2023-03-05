@@ -61,6 +61,11 @@ class  CategoryDetail(ListView):
         queryset = Product.objects.filter(category=category)
         return queryset
     
+class  Home(ListView):
+    model = Product
+    template_name = 'Products/home.html'
+    paginate_by = 16
+    
     
 def About_view(request):
     data = About.objects.all()
