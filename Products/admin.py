@@ -28,11 +28,9 @@ class ProductAdmin(admin.ModelAdmin):
 #     search_fields = ['title', 'contents']
 
 admin.site.register(Brand)
-admin.site.register(Product)
 admin.site.register(Category)
 admin.site.register(About)
-admin.site.register(MenProduct, ProductAdmin)
-admin.site.register(WomenProduct, ProductAdmin)
+admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductSize)
 admin.site.register(ProductColor)
 admin.site.register(ProductImages)

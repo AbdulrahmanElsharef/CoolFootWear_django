@@ -4,29 +4,19 @@ from django.views.generic import ListView, DetailView
 from .models import *
 
 
-class MenProductList(ListView):
-    model = MenProduct
-    paginate_by = 30
+class ProductList(ListView):
+    model = Product
+    paginate_by = 60
     extra_context = {'brands': Brand.objects.all(
     ), 'categories': Category.objects.all()}
 
 
-class MenProductDetail(DetailView):
-    model = MenProduct
+class ProductDetail(DetailView):
+    model = Product
     template_name = 'Products/product_detail.html'
 
 
 
-class WomenProductList(ListView):
-    model = WomenProduct
-    paginate_by = 30
-    extra_context = {'brands': Brand.objects.all(
-    ), 'categories': Category.objects.all()}
-
-
-class WomenProductDetail(DetailView):
-    model = WomenProduct
-    template_name = 'Products/product_detail.html'
 
 
 

@@ -105,22 +105,22 @@ class ProductImages(models.Model):
         return str(self.product)
 
 
-class MenProduct(Product):
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(MenProduct, self).save(*args, **kwargs)
+# class MenProduct(Product):
+#     def save(self, *args, **kwargs):
+#         self.slug = slugify(self.name)
+#         super(MenProduct, self).save(*args, **kwargs)
 
-    def __str__(self):
-        return str(self.name)
+#     def __str__(self):
+#         return str(self.name)
 
 
-class WomenProduct(Product):
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(WomenProduct, self).save(*args, **kwargs)
+# class WomenProduct(Product):
+#     def save(self, *args, **kwargs):
+#         self.slug = slugify(self.name)
+#         super(WomenProduct, self).save(*args, **kwargs)
 
-    def __str__(self):
-        return str(self.name)
+#     def __str__(self):
+#         return str(self.name)
 
 
 class About(models.Model):
